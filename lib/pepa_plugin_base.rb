@@ -9,3 +9,11 @@ class PepaPluginBase
     @m.reply "#{@m.user.nick}: #{msg}"
   end
 end
+
+def pluralise count, options
+  if count > 1
+    options[0]
+  else
+    options[1]
+  end
+end

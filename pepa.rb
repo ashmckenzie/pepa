@@ -9,12 +9,11 @@ require 'active_support/all'
 
 require_relative './lib/pepa_plugin_base'
 
+$config = YAML.load_file('./config.yaml')
+
 Dir['./plugins/**/*.rb'].each do |file|
   require_relative file
 end
-
-$config = YAML.load_file('./config.yaml')
-ap $config['plugins']
 
 bot = Cinch::Bot.new do
   configure do |c|

@@ -4,4 +4,4 @@ rooms:
   - sd
 plugins:
   - Ping
-  - CI::Status
+  - CIStatus

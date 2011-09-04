@@ -1,4 +1,7 @@
 ---
+server: localhost
+rooms:
+  - sd
 plugins:
   - Ping
-  - 'CI::Status'
+  - CI::Status

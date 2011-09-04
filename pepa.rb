@@ -18,8 +18,8 @@ ap $config['plugins']
 
 bot = Cinch::Bot.new do
   configure do |c|
-    c.server = "localhost"
-    c.channels = ["#test"]
+    c.server = $config['server']
+    c.channels = $config['rooms'].collect { |r| "\##{r}" }
     c.plugins.plugins = $config['plugins'].collect { |c| c.constantize }
   end
 end

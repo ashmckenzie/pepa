@@ -1,5 +1,6 @@
 ---
 server: localhost
+nick: pepa
 rooms:
   - sd
 plugins:

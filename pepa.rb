@@ -17,6 +17,7 @@ end
 
 bot = Cinch::Bot.new do
   configure do |c|
+    c.nick = $config['nick']
     c.server = $config['server']
     c.channels = $config['rooms'].collect { |r| "\##{r}" }
     c.plugins.plugins = $config['plugins'].collect { |c| c.constantize }

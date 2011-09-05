@@ -6,6 +6,10 @@ class Ping < PepaPluginBase
     reply "#{ping(query)}"
   end
   
+  def info
+    '!ping <host> - Pings a host and returns either up or down'
+  end
+  
   def ping host
     require 'net/ping'
     begin

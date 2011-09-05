@@ -4,5 +4,6 @@ nick: pepa
 rooms:
   - sd
 plugins:
+  - Help
   - Ping
   - CIStatus

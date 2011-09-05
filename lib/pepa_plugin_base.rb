@@ -1,6 +1,6 @@
 class PepaPluginBase
   include Cinch::Plugin
-  
+
   def execute *args
     @m = args[0]
   end
@@ -16,4 +16,4 @@ def pluralise count, options
   else
     options[1]
   end
-end
+end  

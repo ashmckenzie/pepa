@@ -3,7 +3,7 @@ class Help < PepaPluginBase
   
   def execute m
     super
-    reply help
+    help
   end
   
   def info
@@ -11,10 +11,9 @@ class Help < PepaPluginBase
   end
   
   def help
-    s = [ 'Here is the plugins I know about: -' ]
+    reply 'Here is the plugins I know about: -'
     @bot.plugins.each do |plugin|
-      s << plugin.info
+      reply plugin.info
     end
-    s.join("\n")
   end
 end

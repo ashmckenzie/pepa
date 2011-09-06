@@ -3,7 +3,7 @@ class Ping < PepaPluginBase
   
   def execute m, query
     super
-    reply "#{ping(query)}"
+    ping query
   end
   
   def info
@@ -15,13 +15,12 @@ class Ping < PepaPluginBase
     begin
       p = Net::Ping::External.new(host)
       if p.ping?
-        resp = "#{host} is up"
+        reply "#{host} is up"
       else
-        resp = "#{host} appears down"
+        reply "#{host} appears down"
       end
     rescue Exception => e
-      resp = 'Something went wrong.  Is host correct ?'
+      reply 'Something went wrong.  Is host correct ?'
     end
-    resp
   end
 end

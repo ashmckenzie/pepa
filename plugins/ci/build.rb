@@ -7,7 +7,7 @@ class CIBuild < CIBase
   end
   
   def info
-    "!ci:build <job> - Build a CI job #{ci_url}"
+    "!ci:build <job> - Build a CI job"
   end
   
   def build job

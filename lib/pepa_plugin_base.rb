@@ -6,7 +6,11 @@ class PepaPluginBase
   end
   
   def reply msg
-    @m.reply "#{@m.user.nick}: #{msg}"
+    @m.reply msg, @m.user.nick
+  end
+
+  def notify msg
+    User(@m.user.nick).send(msg)
   end
 end
 

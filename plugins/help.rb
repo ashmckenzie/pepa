@@ -11,9 +11,9 @@ class Help < PepaPluginBase
   end
   
   def help
-    reply 'Here is the plugins I know about: -'
+    notify 'Here is the plugins I know about: -'
     @bot.plugins.each do |plugin|
-      reply plugin.info
+      notify plugin.info
     end
   end
 end

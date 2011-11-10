@@ -11,6 +11,7 @@ require 'active_support/all'
 require_relative './lib/pepa_plugin_base'
 require_relative './lib/sports_data_events'
 
+$redis = Redis.new(:timeout => 0)
 $config = YAML.load_file('./config.yaml')
 
 Dir['./plugins/**/*.rb'].each do |file|

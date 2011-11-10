@@ -8,7 +8,7 @@ class SportsDataEvents
       $redis.subscribe('sd') do |on|
         on.message do |channel, msg|
           data = JSON.parse(msg)
-          @bot.dispatch(:sd_event, nil, data)
+          @bot.dispatch(:sport_event, nil, data)
           puts "##{channel} - #{data['msg']}"
         end 
       end 

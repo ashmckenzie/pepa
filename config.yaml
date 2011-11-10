@@ -1,10 +1,10 @@
 ---
-irc:
-  host: localhost
-  port: 6667
-  nick: pepa
-  rooms:
-    - sd
-  plugins:
-    - Help
-    - Ping
+  irc:
+    plugins:
+      - Help
+      - Ping
+    host: localhost
+    port: 6667
+    nick: pepa
+    rooms:
+      - sd

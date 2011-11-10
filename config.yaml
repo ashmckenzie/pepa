@@ -1,11 +1,10 @@
 ---
-server: localhost
-nick: pepa
-rooms:
-  - sd
-plugins:
-  - Help
-  - Ping
-  - CIStatus
-  - CIBuild
-  - SportsDataEvent
+irc:
+  host: localhost
+  port: 6667
+  nick: pepa
+  rooms:
+    - sd
+  plugins:
+    - Help
+    - Ping

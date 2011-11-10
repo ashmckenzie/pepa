@@ -1,3 +1,5 @@
+require_relative 'redis_connect'
+
 class SportsDataEvents
   def initialize(bot)
     @bot = bot 
@@ -5,7 +7,7 @@ class SportsDataEvents
 
   def start
     while true
-      $redis.subscribe('sd') do |on|
+      $redis.subscribe($config['redis']['channel']) do |on|
         on.message do |channel, msg|
           data = JSON.parse(msg)
           @bot.dispatch(:sport_event, nil, data)

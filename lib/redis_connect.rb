@@ -1,0 +1,1 @@
+$redis = Redis.new(:host => $config['redis']['host'], :port => $config['redis']['port'], :timeout => 0)

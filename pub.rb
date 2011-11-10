@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'rubygems'
+require 'json'
 require 'bundler/setup'
 Bundler.require(:default)
 
-require 'json'
+require_relative 'lib/config'
+require_relative 'lib/redis_connect'
 
-$redis = Redis.new(:host => '10.170.222.152', :port => 6379, :timeout => 0)
-
-$redis.publish 'sd', { 'msg' => ARGV.join.strip }.to_json
+$redis.publish($config['redis']['channel'], { 'msg' => ARGV.join.strip }.to_json)

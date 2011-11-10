@@ -4,10 +4,12 @@ require 'rubygems'
 require 'bundler/setup'
 Bundler.require(:default)
 
+require 'json'
 require 'yaml'
 require 'active_support/all'
 
 require_relative './lib/pepa_plugin_base'
+require_relative './lib/sports_data_events'
 
 $config = YAML.load_file('./config.yaml')
 
@@ -24,4 +26,5 @@ bot = Cinch::Bot.new do
   end
 end
 
+Thread.new { SportsDataEvents.new(bot).start }
 bot.start

@@ -9,3 +9,4 @@ gem 'i18n'
 
 # ci::status
 gem 'rest-client'
+gem 'redis'

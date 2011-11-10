@@ -1,35 +1,42 @@
 var socketio = require('socket.io'),
     redis = require('redis'),
-    path = require('path'),
-    yaml = require('yaml'),
-    fs = require('fs'); 
+    path = require('path');
 
 var $ = require('jquery'); 
 
-var config = load_config(path.resolve('..') + '/config.yaml')
-var config_local = load_config(path.resolve('..') + '/config_local.yaml')
+var utils = require('./utils.js');
 
-merge(config, config_local);
+var config = utils.load_config(path.resolve('..') + '/config.yaml')
+var config_local = utils.load_config(path.resolve('..') + '/config_local.yaml')
+utils.merge(config, config_local);
 
-var app = require('http').createServer(handler)
-  , io = require('socket.io').listen(app)
-  , fs = require('fs')
+/* Express */
 
-app.listen(3000);
+var express = require('express');
+var app = express.createServer();
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/public/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
+app.configure(function(){
+  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade');
+  app.use(express.bodyParser());
+  app.use(express.methodOverride());
+  app.use(app.router);
+  app.use(express.static(__dirname + '/public'));  
+});
 
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+app.configure('development', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
 
+app.get('/', function(req, res){
+  res.render('index');
+});
+
+app.listen(config.node.port);
+
+/* Redis PUB/SUB */
+
+var io = require('socket.io').listen(app)
 var client = redis.createClient(config.redis.port, config.redis.host);
 
 io.sockets.on('connection', function (socket) {
@@ -39,37 +46,3 @@ io.sockets.on('connection', function (socket) {
 });
 
 client.subscribe(config.redis.channel);
-
-function load_config(config) {
-  return yaml.eval(fs.readFileSync(config).toString());
-}
-
-function merge(obj1, obj2) {
-
-  for (var p in obj2) {
-    try {
-      // Property in destination object set; update its value.
-      if ( obj2[p].constructor==Object ) {
-
-        obj1[p] = merge(obj1[p], obj2[p]);
-
-      } else if ( obj2[p].constructor==Array ) {
-
-        /* I'd like to merge Array's too please */
-
-        obj1[p] = obj2[p].concat(obj1[p]);
-
-      } else {
-        obj1[p] = obj2[p];
-
-      }
-
-    } catch(e) {
-      // Property in destination object not set; create it and set its value.
-      obj1[p] = obj2[p];
-
-    }
-  }
-
-  return obj1;
-}

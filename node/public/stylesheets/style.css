@@ -1,4 +1,63 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+}
+
+#content {
+  margin: 0 auto;
+  width: 800px;
+  text-align: center;
+}
+
+#events {
+  left: 225px;
+  position: relative;
+}
+
+#events,
+#events .event {
+  text-align: left;
+  width: 400px;
+}
+
+#events .event,
+#events .event-type,
+#events .event-message {
+  float: left;
+}
+
+#events .event {
+  clear: both;
+  margin-bottom: 20px;
+}
+
+#events .event-type {
+  height: 50px;
+  width: 50px;
+}
+
+#events .event .football_red_card {
+  background: url(/images/football/red-card.png) no-repeat;
+}
+
+#events .event .football_yellow_card {
+  background: url(/images/football/yellow-card.png) no-repeat;
+}
+
+#events .event .football_goal,
+#events .event .football_goal_penalty {
+  background: url(/images/football/goal.png) no-repeat;
+}
+
+#events .event .football_foul {
+  background: url(/images/football/foul.png) no-repeat;
+}
+
+#events .event-timestamp {
+   color: #ccc;
+   font-size: 0.8em;
+   margin-top: 4px;
+}
+
+#events .event-message {
+  margin-left: 20px;
 }

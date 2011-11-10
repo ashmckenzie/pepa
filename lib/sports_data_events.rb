@@ -11,7 +11,7 @@ class SportsDataEvents
         on.message do |channel, msg|
           data = JSON.parse(msg)
           @bot.dispatch(:sport_event, nil, data)
-          puts "##{channel} - #{data['msg']}"
+          puts "##{channel} - #{data.to_s}"
         end 
       end 
     end 

@@ -11,6 +11,7 @@ require_relative 'lib/redis_connect'
 $redis.subscribe($config['redis']['channel']) do |on|
   on.message do |channel, msg|
     data = JSON.parse(msg)
-    puts "##{channel} - #{data['msg']}"
+    puts "##{channel} - #{data.to_s}"
+    `say #{data['event']['message']}`
   end
 end

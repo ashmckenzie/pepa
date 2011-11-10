@@ -4,6 +4,6 @@ class SportsDataEvent
   listen_to :sport_event
 
   def listen(m, data)
-    Channel("#sd").send data['msg']
+    Channel('#' + $config['irc']['rooms'].first).send data['event']['message']
   end
 end

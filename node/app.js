@@ -39,8 +39,12 @@ app.listen(config.node.port);
 var io = require('socket.io').listen(app)
 var client = redis.createClient(config.redis.port, config.redis.host);
 
+io.configure(function() {
+  io.set('log level', 1);
+});
+
 io.sockets.on('connection', function (socket) {
-    client.on("message", function (channel, message) {
+  client.on("message", function (channel, message) {
     socket.emit('message', message);
   });
 });

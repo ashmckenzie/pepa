@@ -12,6 +12,6 @@ $redis.subscribe($config['redis']['channel']) do |on|
   on.message do |channel, msg|
     data = JSON.parse(msg)
     puts "##{channel} - #{data.to_s}"
-    `say #{data['event']['message']}`
+    #`say #{data['event']['message']}`
   end
 end

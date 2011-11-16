@@ -2,6 +2,10 @@ body {
   font: 14px "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
 }
 
+.hidden {
+  display: none;
+}
+
 #content {
   margin: 0 auto;
   width: 800px;
@@ -16,7 +20,7 @@ body {
 #events,
 #events .event {
   text-align: left;
-  width: 400px;
+  width: 450px;
 }
 
 #events .event,
@@ -60,4 +64,8 @@ body {
 
 #events .event-message {
   margin-left: 20px;
+}
+
+#events .event-message p {
+  margin: 0;
 }

@@ -16,4 +16,4 @@ event_types = [
 random_event_type = event_types.sample
 event = { :type => random_event_type[:type], :message => Faker::Name.name + " " + random_event_type[:message] }
 
-`./pub.rb #{event[:type]} '#{event[:message]}'`
+`./pub.rb #{event[:type]} "#{event[:message]}"`

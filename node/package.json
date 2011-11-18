@@ -1,0 +1,26 @@
+{
+  "name": "sports-data-events",
+  "description": "Sports Data events",
+  "version": "1.0.0",
+  "repository": {
+    "url": ""
+  },
+  "author": "Ash McKenzie <ash@greenworm.com.au>",
+  "directories": {
+    "lib": "."
+  },
+  "scripts": {
+    "test": "expresso"
+  },
+  "engines": {
+    "node": ">= 0.6.1"
+  },
+  "dependencies": {
+    "express": ">= 2.0.0 < 3.0.0",
+    "jade": "*",
+    "socket.io": "*",
+    "redis": "*",
+    "hiredis": "*",
+    "yaml": "*"
+  }
+}

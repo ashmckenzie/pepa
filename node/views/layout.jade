@@ -5,12 +5,12 @@ html(lang="en")
     #templates.hidden
       #event
         .event
-          div(class="event-type {{ type }}")
+          div(class="event-type {{ eventType }} {{ extraData }}")
           .event-message
-            p
-              {{ message }}
+            p {{#messages}}{{en}}{{/messages}}
+
             .event-timestamp
-              {{ timestamp }}
+              {{ timeStampUTC }}
     #content
       !=body
     include includes/footer

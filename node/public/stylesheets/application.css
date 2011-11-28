@@ -55,6 +55,7 @@ body {
   background: url(/images/football/yellow-card.png) no-repeat;
 }
 
+#events .event .football_goal_event,
 #events .event .football_goal,
 #events .event .football_goal_penalty {
   background: url(/images/football/goal.png) no-repeat;

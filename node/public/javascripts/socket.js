@@ -15,7 +15,8 @@ function receive_events() {
 
   socket.on('message', function (message) {
     json = jQuery.parseJSON(message);
-    content.prepend(Mustache.to_html($('#event').html(), json.event));
+    json.extraData = json[json.extraKey]
+    content.prepend(Mustache.to_html($('#event').html(), json));
   });
 }
 

@@ -1,3 +1,4 @@
 .idea
 config.d/*
 config_local.yaml
+node_modules
